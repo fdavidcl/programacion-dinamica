@@ -71,11 +71,12 @@ Programación Dinámica} % Subtitle
 
 \maketitle % Print the title section
 
+
 %----------------------------------------------------------------------------------------
 %	ABSTRACT AND KEYWORDS
 %----------------------------------------------------------------------------------------
 
-\renewcommand{\abstractname}{Índice} % Uncomment to change the name of the abstract to something else
+\renewcommand{\abstractname}{Resumen} % Uncomment to change the name of the abstract to something else
 
 %\begin{abstract}
 %Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
@@ -84,6 +85,12 @@ Programación Dinámica} % Subtitle
 %\hspace*{3,6mm}\textit{Keywords:} lorem , ipsum , dolor , sit amet , lectus % Keywords
 
 %\vspace{30pt} % Some vertical space between the abstract and first section
+
+
+{\parskip=2pt
+  \tableofcontents
+}
+\pagebreak
 
 %----------------------------------------------------------------------------------------
 %	ESSAY BODY
@@ -170,9 +177,11 @@ Programación Dinámica} % Subtitle
     mínimo de monedas necesarias para sumar un precio $P$. Conocemos el caso base trivial $g(0) = 0$ y
     usando la propiedad anterior, definimos la siguiente relación de recurrencia:
     \begin{equation}
-      C(p) = \min_{m_i \in M} (1 + C(p - m_i))
+      g(p) = \min_{m_i \in M} (1 + g(p - m_i))
     \end{equation}
     Ya que la solución óptima debe ser de esa forma para alguna moneda $m_i$.
+  
+    Aplicamos programación dinámica memorizando las imágenes por esta función.
   
 \section{Problema del viajante de comercio}
 
