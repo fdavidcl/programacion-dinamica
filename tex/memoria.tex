@@ -149,7 +149,7 @@ Programación Dinámica} % Subtitle
 
 \section{Terminales de venta}
   \subsection{Enunciado}
-    Dado un conjunto de monedas $\{m_1, m_2, \dots, m_n\} \subset \mathbb{N}$, buscamos frecuencias $\{f_1,f_2,\dots f_n\} \subset \mathbb{N}$ de 
+    Dado un conjunto de monedas $M = \{m_1, m_2, \dots, m_n\} \subset \mathbb{N}$, buscamos frecuencias $\{f_1,f_2,\dots f_n\} \subset \mathbb{N}$ de 
     monedas que cumplan que su suma es igual a un precio dado:
     \begin{equation}
      \sum_{i=1}^n m_i f_i = P
@@ -158,8 +158,21 @@ Programación Dinámica} % Subtitle
     \begin{equation}
      \sum_{i=1}^n f_i
     \end{equation}
-  
     
+    
+  \subsection{Algoritmo}
+    Podemos aplicar programación dinámica sabiendo que se cumple el principio de optimalidad.
+    Cualquier subconjunto de una solución óptima debería ser también una solución óptima para
+    su suma, ya que si no lo fuera, podría sustituirse por el óptimo, mejorando el óptimo global.
+    
+    En particular, el subconjunto de monedas sin la última moneda es también una solución óptima.
+    Definimos la función $g: \mathbb{N} \to \mathbb{N}$, donde $g(P)$ será el número
+    mínimo de monedas necesarias para sumar un precio $P$. Conocemos el caso base trivial $g(0) = 0$ y
+    usando la propiedad anterior, definimos la siguiente relación de recurrencia:
+    \begin{equation}
+      C(p) = \min_{m_i \in M} (1 + C(p - m_i))
+    \end{equation}
+    Ya que la solución óptima debe ser de esa forma para alguna moneda $m_i$.
   
 \section{Problema del viajante de comercio}
 
