@@ -3,8 +3,6 @@
 
 from memoize import memoize
 
-coins = []
-
 @memoize
 def nCoins(price):
     if price == 0:
