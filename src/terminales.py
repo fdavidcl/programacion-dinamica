@@ -1,4 +1,13 @@
 #!/bin/python
 # encoding: utf8
 
-import memoize
+from memoize import memoize
+
+coins = []
+
+@memoize
+def nCoins(price):
+    if price == 0:
+        return 0
+    else:
+        return min([1+ nCoins(price - m) for m in coins])
