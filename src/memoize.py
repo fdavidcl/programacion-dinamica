@@ -1,4 +1,5 @@
 #!/bin/python
+# encoding: utf8
 
 # Dada una función, devuelve una versión usando memoización.
 # La función implementa una caché para conocer sus resultados ya calculados.
