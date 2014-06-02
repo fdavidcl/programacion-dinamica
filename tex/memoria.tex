@@ -207,7 +207,9 @@ Programación Dinámica} % Subtitle
 
 \section{Caminos mínimos en grafos}
   \subsection{Enunciado}
-
+    Sea $G=(V,E)$ un grafo con $n$ vértices $V$ y un conjunto de aristas $E$.
+  
+  
   \subsection{Algoritmo de Dijkstra}
     
   
@@ -229,7 +231,27 @@ Programación Dinámica} % Subtitle
     Para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
     de los posibles nodos iniciales.
   
+    \subsubsection{Requisitos y eficiencia}
+      Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
+      no contenga ciclos de peso negativo.
+      
+      
+      
   \subsection{Algoritmo de Floyd-Warshall}
+    Para el algoritmo de Floyd-Warshall asumimos que el grafo no contiene ciclos de peso negativo.
+    Dados vértices $u,v \in V$, llamaremos $g(u,v,m)$ a la distancia del camino más corto de $u$
+    hasta $v$ pudiendo usar sólo los nodos $[1..m]$ como nodos intermedios.
+    
+    Podemos calcular entonces la función usando recursividad, sabiendo que el
+    camino mínimo está obligado a pasar o no pasar por el nodo $k$ y que los
+    subcaminos de un camino mínimo son también mínimos:
+    \begin{equation}
+      \begin{split}
+      g(u,v,0) &= w(u,v) \\
+      g(u,v,m) &= min\{g(u,v,m-1), g(u,k,k-1)+g(k,v,k-1)\}
+      \end{split}
+    \end{equation}
+
   
   \subsection{Algoritmo de Johnson}
 
