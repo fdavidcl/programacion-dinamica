@@ -9,7 +9,7 @@ def tsp(i, S):
     if len(S) == 0:
         return d[i][n-1]
     else:
-        return min([d[i][j] + tsp(j,S - frozenset([j])) for j in S])
+        return min([d[i][j] + tsp(j,S-frozenset([j])) for j in S])
 
 
 if __name__ == "__main__":

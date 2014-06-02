@@ -33,6 +33,7 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{mathpazo} % Use the Palatino font
+\usepackage{amsmath}
 \usepackage[T1]{fontenc} % Required for accented characters
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
 
@@ -205,6 +206,31 @@ Programación Dinámica} % Subtitle
       
 
 \section{Caminos mínimos en grafos}
+  \subsection{Enunciado}
 
+  \subsection{Algoritmo de Dijkstra}
+    
+  
+  \subsection{Algoritmo de Bellman-Ford}
+    Para el algoritmo de Bellman-Ford asumimos que el grafo no contiene ciclos de peso negativo.
+    Fijado un vértice $s$, definimos $g(a,m)$ como la distancia del camino mínimo entre $s$ y $a$
+    usando hasta $m$ aristas.
+    
+    Trivialmente, la distancia mínima desde $s$ hasta $a$ será $g(a,n-1)$, ya que no puede
+    haber ciclos de peso negativo. Podemos calcular entonces la función usando recursividad:
+    \begin{equation} 
+      \begin{split}
+	g(s,0)  &=  0 \\
+	g(u,0)  &=  \infty \\
+	g(u,m)  &=  \min_{v \in V} \{g(v,m-1) + w(v,u)\} \\
+      \end{split} 
+    \end{equation}
+
+    Para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
+    de los posibles nodos iniciales.
+  
+  \subsection{Algoritmo de Floyd-Warshall}
+  
+  \subsection{Algoritmo de Johnson}
 
 \end{document}
