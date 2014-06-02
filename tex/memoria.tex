@@ -153,6 +153,9 @@ Programación Dinámica} % Subtitle
 %  - Implementación en C++ si es necesaria por eficiencia
 
 \section{Compraventa de acciones}
+	\subsection{Enunciado}
+      Dado un array con valores numéricos, queremos calcular las posiciones a y b que nos den la mayor diferencia $array[b]-array[a]$, con la condición de que la posición b esté más a la derecha que a.
+	  Simularemos de esta forma una operación de compraventa de acciones en la que queremos obtener la mayor ganancia, donde el array representa el precio de las acciones a lo largo de un periodo de tiempo, y tenemos la natural restricción de que hemos de comprar las acciones antes de venderlas. 
 
 \section{Terminales de venta}
   \subsection{Enunciado}
@@ -186,7 +189,20 @@ Programación Dinámica} % Subtitle
     Aplicamos programación dinámica memorizando las imágenes por esta función.
   
 \section{Problema del viajante de comercio}
-  
+  \subsection{Enunciado}
+  	Dada una lista $S$ de $n$ ciudades, representadas como puntos en el plano:
+  	\begin{equation}
+  	    S = [(x_0,y_0), (x_1,y_1), \dots (x_{n-1},y_{n-1})] \subset \mathbb{R}^2
+  	\end{equation}
+  	Y definiendo la longitud de recorrer una lista como la suma de las distancias de cada ciudad a la siguiente:
+  	\begin{equation}
+  	    long(S) = \sum_{i \in \mathbb{Z}_n} dist((x_i,y_i), (x_{i+1}, y_{i+1})) = \sum_{i \in \mathbb{Z}_n} \sqrt{(x_i-x_{i+1})^2 + (y_i-y_{i+1})^2}
+  	\end{equation}
+  	El objetivo es encontrar la permutación de la lista $\sigma : \mathbb{Z}_n \leftrightarrow \mathbb{Z}_n$, verificando que su longitud sea mínima:
+  	\begin{equation}
+  	    long(\sigma(S)) = long([(x_{\sigma(1)},y_{\sigma(1)}), (x_{\sigma(2)},y_{\sigma(2)}), \dots, (x_{\sigma(n)},y_{\sigma(n)})])
+      \end{equation}
+      
 
 \section{Caminos mínimos en grafos}
 
