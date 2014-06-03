@@ -1,0 +1,15 @@
+% Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{def}}\ num$\_$coins\textcolor{BrickRed}{(}tipos\textcolor{BrickRed}{,}\ precio\textcolor{BrickRed}{)} \\
+\mbox{}\ \ \ \ monedas\ \textcolor{BrickRed}{=}\ \textcolor{BrickRed}{[]} \\
+\mbox{}\ \ \ \ monedas\textcolor{BrickRed}{[}\textcolor{Purple}{0}\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{for}}\ c\ \textbf{\textcolor{Blue}{in}}\ \textcolor{BrickRed}{[}\textcolor{Purple}{0}\textcolor{BrickRed}{..}precio\textcolor{BrickRed}{]} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{for}}\ m\ \textbf{\textcolor{Blue}{in}}\ tipos \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{if}}\ \textcolor{BrickRed}{(}c\textcolor{BrickRed}{+}m\ \textcolor{BrickRed}{$\le$}\ precio\ \textcolor{BrickRed}{\&\&} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{BrickRed}{(!}monedas\textcolor{BrickRed}{[}c\textcolor{BrickRed}{+}m\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{$|$$|$}\ monedas\textcolor{BrickRed}{[}c\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{+}\ \textcolor{Purple}{1}\ \textcolor{BrickRed}{\textless{}}\ monedas\textcolor{BrickRed}{[}c\textcolor{BrickRed}{+}m\textcolor{BrickRed}{])} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ monedas\textcolor{BrickRed}{[}c\textcolor{BrickRed}{+}m\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{=}\ monedas\textcolor{BrickRed}{[}c\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{+}\ \textcolor{Purple}{1} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{return}}\ monedas\textcolor{BrickRed}{[}precio\textcolor{BrickRed}{]} \\
+\mbox{}\textbf{\textcolor{Blue}{end}} \\
+\mbox{}

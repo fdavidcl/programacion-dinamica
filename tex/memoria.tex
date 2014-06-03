@@ -121,7 +121,7 @@ Programación Dinámica} % Subtitle
 		Pseudocódigo del algoritmo:
 		
 		\small
-		\texttt{\input{compraventa_iter.pseudo.tex}}
+		\texttt{\input{compraventa_iter.final.pseudo.tex}}
 		\normalsize
 		
 	\subsection{Análisis de eficiencia}
@@ -157,6 +157,16 @@ Programación Dinámica} % Subtitle
     Ya que la solución óptima debe ser de esa forma para alguna moneda $m_i$.
   
     Aplicamos programación dinámica memorizando las imágenes por esta función.
+    
+    Pseudocódigo del algoritmo:
+    
+ 		\small
+ 		\texttt{\input{terminales_iter.final.pseudo.tex}}
+ 		\normalsize
+ 	
+ 	\subsection{Análisis de eficiencia}
+ 	En este algoritmo, utilizamos dos bucles anidados,
+ 	el exterior realiza \texttt{precio} iteraciones, y el interior recorre los tipos, luego hará tantas iteraciones como tipos haya. En resumen, la eficiencia queda $\mathcal{O}(np)$, donde $n$ es la cantidad de tipos distintos de monedas y $p$ es el precio a resolver.
   
 \section{Problema del viajante de comercio}
   \subsection{Enunciado}
