@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/env python
 # encoding: utf8
 
 from memoize import memoize
