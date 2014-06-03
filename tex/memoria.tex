@@ -207,12 +207,11 @@ Programación Dinámica} % Subtitle
 
 \section{Caminos mínimos en grafos}
   \subsection{Enunciado}
-    Sea $G=(V,E)$ un grafo con $n$ vértices $V$ y un conjunto de aristas $E$,
-    % Óscar
     %Traducido de: http://www.cs.rochester.edu/u/nelson/courses/csc_173/graphs/apsp.html, entre otras
-    donde cada arista $(u,v)$ tienen asociado un coste $C[u,v] \geq 0$.
+    Sea $G=(V,E)$ un grafo con $n$ vértices $V$ y un conjunto de aristas $E$,
+    donde cada arista $(u,v)$ tiene asociado un peso $w(u,v)$.
     
-    El problema del \textit{All Pairs Shortest Path} (APSP) consiste en encontrar el camino de coste mínimo entre los puntos $u$ y $v$ $\ \ \ \forall u,v \in V$.
+    El problema del \textit{All Pairs Shortest Path} (APSP) consiste en encontrar el camino de coste mínimo para cualquier pareja de puntos $u$ y $v$.
   
   \subsection{Algoritmo de Dijkstra}
     
