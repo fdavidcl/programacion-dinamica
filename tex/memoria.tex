@@ -200,7 +200,7 @@ Programación Dinámica} % Subtitle
     \begin{itemize}
       \item Al nodo fijado $s$, le asignamos el valor 0 y lo tomamos como referente $r$ y al resto le asignamos $\infty$
       \item A todos los puntos que estén unidos al nodo $r$  por una
-      arista y no hayan sido tomados como referente antes $a$, le asignamos $g(a) = \min \{g(a), g(r) + w(r,a)\}$.
+      arista y no hayan sido tomados como referente antes, $a$, le asignamos $g(a) = \min \{g(a), g(r) + w(r,a)\}$.
       \item Tomamos como referente $r$ el siguiente nodo del grafo con el menor valor.
       \item Repetimos los puntos 2 y 3 hasta que todos los nodos hayan sido tomados como referente.
     \end{itemize}
@@ -261,5 +261,25 @@ Programación Dinámica} % Subtitle
       memoizados.
   
   \subsection{Algoritmo de Johnson}
+      Exigimos que el grafo sea dirigido disperso(número de aristas muy inferior al del
+      máximo posible en el grafo), sin ciclos negativos.
+      
+      Sea un grafo $G=(V,E)$ con pesos $w(i,j)$. 
+      
+    \begin{itemize}
+      \item Añadimos un vértice $q$ al grafo con $w(q,u) = 0 \quad \forall u \in V$
+      \item Se emplea el algoritmo de Bellman-Ford partiendo de $q$, definiendo
+	$g(v):=$peso del camino mínimo de $q$ a $v$
+      \item Se redifine $w(u,v):=w(u,v) + g(u)-g(v)$. Dado un camino de origen $u$ y
+	extremo $v$ que pasa por nodos intermedios $[i_1,\ldots i_p]$ su coste es:
+	\begin{eqnarray*}
+	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) g(i_k) - g(i_{k+1}) + w(i_p,v) + \\
+	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + w(i_p,v) + g(u) - g(v)
+	\end{eqnarray*}
+	
+	Por tanto a todos los caminos que van de $u$ a $v$ en el grafo de nuevos pesos
+	se le suma la constante $g(u) - g(v)$
+      \item Usamos el algoritmo de Dijkstra en el grafo de nuevos pesos.
+    \end{itemize}
 
 \end{document}

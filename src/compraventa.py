@@ -24,6 +24,7 @@ if __name__ == "__main__":
     solucion = compraventa()
 
     if solucion[-1] is not solucion[0]:
-        print "Día de compra/ Día de venta: ", solucion, "\nBeneficio: ", precios[solucion[-1]] - precios[solucion[0]]
+        print "Día de compra/ Día de venta: ", solucion
+        print "Beneficio: ", precios[solucion[-1]] - precios[solucion[0]]
     else:
         print "No se puede obtener beneficio en la compraventa"
