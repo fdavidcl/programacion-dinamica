@@ -219,9 +219,9 @@ Programación Dinámica} % Subtitle
     
     Para calcular $g(a)$ para todos los puntos:
     \begin{itemize}
-      \item Al nodo fijado $s$, le asignamos el valor 0 y lo tomamos como referente $r$ y al resto, $\infty$
+      \item Al nodo fijado $s$, le asignamos el valor 0 y lo tomamos como referente $r$ y al resto le asignamos $\infty$
       \item A todos los puntos que estén unidos al nodo $r$  por una
-      arista y no hayan sido tomados como referente antes $a$, le asignamos $g(a) = \min {g(a), g(r) + w(r,a)}$.
+      arista y no hayan sido tomados como referente antes $a$, le asignamos $g(a) = \min \{g(a), g(r) + w(r,a)\}$.
       \item Tomamos como referente $r$ el siguiente nodo del grafo con el menor valor.
       \item Repetimos los puntos 2 y 3 hasta que todos los nodos hayan sido tomados como referente.
     \end{itemize}
