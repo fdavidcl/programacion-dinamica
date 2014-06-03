@@ -29,12 +29,15 @@
 \usepackage{graphicx} % Required for including pictures
 \usepackage{wrapfig} % Allows in-line images
 \usepackage[spanish]{babel} % English language/hyphenation
+\usepackage[usenames,dvipsnames]{color} % Coloring code
 \selectlanguage{spanish}
 \usepackage[utf8]{inputenc}
 
 \usepackage{mathpazo} % Use the Palatino font
 \usepackage{amsmath}
 \usepackage[T1]{fontenc} % Required for accented characters
+\setlength{\parindent}{0pt}
+\parskip=8pt
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
 
 \makeatletter
@@ -93,57 +96,6 @@ Programación Dinámica} % Subtitle
 }
 \pagebreak
 
-%----------------------------------------------------------------------------------------
-%	ESSAY BODY
-%----------------------------------------------------------------------------------------
-
-% \section*{Introduction}
-% 
-% This statement requires citation \cite{Smith:2012qr}; this one does too \cite{Smith:2013jd}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum lacus sem, ut varius ante dignissim ac. Sed a mi quis lectus feugiat aliquam. Nunc sed vulputate velit. Sed commodo metus vel felis semper, quis rutrum odio vulputate. Donec a elit porttitor, facilisis nisl sit amet, dignissim arcu. Vivamus accumsan pellentesque nulla at euismod. Duis porta rutrum sem, eu facilisis mi varius sed. Suspendisse potenti. Mauris rhoncus neque nisi, ut laoreet augue pretium luctus. Vestibulum sit amet luctus sem, luctus ultrices leo. Aenean vitae sem leo.
-% 
-% Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus consectetur. Nulla pellentesque tortor et aliquam vehicula. Maecenas imperdiet euismod enim ut pharetra. Suspendisse pulvinar sapien vitae placerat pellentesque. Nulla facilisi. Aenean vitae nunc venenatis, vehicula neque in, congue ligula.
-% 
-% Pellentesque quis neque fringilla, varius ligula quis, malesuada dolor. Aenean malesuada urna porta, condimentum nisl sed, scelerisque nisi. Suspendisse ac orci quis massa porta dignissim. Morbi sollicitudin, felis eget tristique laoreet, ante lacus pretium lacus, nec ornare sem lorem a velit. Pellentesque eu erat congue, ullamcorper ante ut, tristique turpis. Nam sodales mi sed nisl tincidunt vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-% 
-% %------------------------------------------------
-% 
-% \section*{Section Name}
-% 
-% Cras gravida, est vel interdum euismod, tortor mi lobortis mi, quis adipiscing elit lacus ut orci. Phasellus nec fringilla nisi, ut vestibulum neque. Aenean non risus eu nunc accumsan condimentum at sed ipsum.
-% \begin{wrapfigure}{l}{0.4\textwidth} % Inline image example
-% \begin{center}
-% \includegraphics[width=0.38\textwidth]{fish.png}
-% \end{center}
-% \caption{Fish}
-% \end{wrapfigure}
-% Aliquam fringilla non diam sed varius. Suspendisse tellus felis, hendrerit non bibendum ut, adipiscing vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis purus eget nisl scelerisque, commodo rhoncus lacus porta. Vestibulum vitae turpis tincidunt, varius dolor in, dictum lectus. Aenean ac ornare augue, ac facilisis purus. Sed leo lorem, molestie sit amet fermentum id, suscipit ut sem. Vestibulum orci arcu, vehicula sed tortor id, ornare dapibus lorem. Praesent aliquet iaculis lacus nec fermentum. Morbi eleifend blandit dolor, pharetra hendrerit neque ornare vel. Nulla ornare, nisl eget imperdiet ornare, libero enim interdum mi, ut lobortis quam velit bibendum nibh.
-% 
-% Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
-% 
-% %------------------------------------------------
-% 
-% \section*{Conclusion}
-% 
-% Fusce in nibh augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In dictum accumsan sapien, ut hendrerit nisi. Phasellus ut nulla mauris. Phasellus sagittis nec odio sed posuere. Vestibulum porttitor dolor quis suscipit bibendum. Mauris risus lectus, cursus vitae hendrerit posuere, congue ac est. Suspendisse commodo eu eros non cursus. Mauris ultrices venenatis dolor, sed aliquet odio tempor pellentesque. Duis ultricies, mauris id lobortis vulputate, tellus turpis eleifend elit, in gravida leo tortor ultricies est. Maecenas vitae ipsum at dui sodales condimentum a quis dui. Nam mi sapien, lobortis ac blandit eget, dignissim quis nunc.
-% 
-% \begin{enumerate}
-% \item First numbered list item
-% \item Second numbered list item
-% \end{enumerate}
-% 
-% Donec luctus tincidunt mauris, non ultrices ligula aliquam id. Sed varius, magna a faucibus congue, arcu tellus pellentesque nisl, vel laoreet magna eros et magna. Vivamus lobortis elit eu dignissim ultrices. Fusce erat nulla, ornare at dolor quis, rhoncus venenatis velit. Donec sed elit mi. Sed semper tellus a convallis viverra. Maecenas mi lorem, placerat sit amet sem quis, adipiscing tincidunt turpis. Cras a urna et tellus dictum eleifend. Fusce dignissim lectus risus, in bibendum tortor lacinia interdum.
-
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-
-% \bibliographystyle{unsrt}
-% 
-% \bibliography{sample}
-
-%----------------------------------------------------------------------------------------
-
-
 
 %% Estructura de la práctica
 % Para cada algoritmo, debería escribirse:
@@ -155,8 +107,25 @@ Programación Dinámica} % Subtitle
 
 \section{Compraventa de acciones}
 	\subsection{Enunciado}
-      Dado un array con valores numéricos, queremos calcular las posiciones a y b que nos den la mayor diferencia $array[b]-array[a]$, con la condición de que la posición b esté más a la derecha que a.
-	  Simularemos de esta forma una operación de compraventa de acciones en la que queremos obtener la mayor ganancia, donde el array representa el precio de las acciones a lo largo de un periodo de tiempo, y tenemos la natural restricción de que hemos de comprar las acciones antes de venderlas. 
+      Dado un array con $n$ valores numéricos, el objetivo es calcular las posiciones $a$ y $b$ que nos den la mayor diferencia $valores[b]-valores[a]$, con la condición de que la posición $b$ esté más a la derecha que $a$.
+      
+      El problema representa una operación de compra y venta de acciones, en la que se quiere obtener la mayor ganancia. En este caso, el array indica los precios de las acciones a lo largo de un período de tiempo.
+      
+	\subsection{Algoritmo}
+		Para aplicar programación dinámica al problema, hemos de caracterizar una solución óptima. Esta será un par $(a,b)$ cumpliendo
+		$$ valores[b]-valores[a] \le valores[j]-valores[i]
+		\quad \forall i,j \in \{1,\dots n\}\ con\ i<j $$
+		
+		Podemos observar que se cumple el principio de optimalidad de Bellman: el par $(a,b)$, solución óptima de los valores de 1 hasta $n$, estará compuesta de la solución $(a',b')$ dada por el mismo problema en los valores de 1 a $n-1$, y la comprobación de si la diferencia del mínimo de $valores$ hasta $n-1$ con $valores[n]$ es mayor que el beneficio de la solución $(a', b')$.
+		
+		Pseudocódigo del algoritmo:
+		
+		\small
+		\texttt{\input{compraventa_iter.pseudo.tex}}
+		\normalsize
+		
+	\subsection{Análisis de eficiencia}
+		El análisis de este algoritmo es muy sencillo. Tenemos un único bucle de tipo \textit{for} realizando $n-1$ iteraciones, con operaciones $\mathcal{O}(1)$ en el interior. Por tanto, su eficiencia será $\mathcal{O}(n)$, es decir, es un algoritmo lineal.
 
 \section{Terminales de venta}
   \subsection{Enunciado}

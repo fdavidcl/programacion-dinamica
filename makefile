@@ -1,6 +1,8 @@
 
 SHELL = /bin/bash
 
+PSEUDO = $(wildcard src/*.pseudo*)
+
 SRC = $(wildcard src/*.c src/*.cc src/*.cpp)
 EXE = $(basename $(SRC))
 
@@ -13,4 +15,7 @@ default: $(EXE)
 clean:
 	$(RM) -fv $(EXE) core.* *~
 
-.PHONY: clean default
+tex: $(PSEUDO)
+	./gentex.sh
+
+.PHONY: clean default tex
