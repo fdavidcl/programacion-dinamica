@@ -1,0 +1,20 @@
+% Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite
+\noindent
+\mbox{}\textbf{\textcolor{Blue}{def}}\ resuelve\textcolor{BrickRed}{(}precios\textcolor{BrickRed}{)} \\
+\mbox{}\ \ \ \ minimo\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0} \\
+\mbox{}\ \ \ \ compra\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0} \\
+\mbox{}\ \ \ \ venta\ \textcolor{BrickRed}{=}\ \textcolor{Purple}{0} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{for}}\ i\ \textbf{\textcolor{Blue}{in}}\ \textcolor{BrickRed}{[}\textcolor{Purple}{1}\textcolor{BrickRed}{..}\#precios\textcolor{BrickRed}{]} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{if}}\ \textcolor{BrickRed}{(}precios\textcolor{BrickRed}{[}i\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{\textless{}}\ minimo\textcolor{BrickRed}{)} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ minimo\ \textcolor{BrickRed}{=}\ i \\
+\mbox{} \\
+\mbox{}\ \ \ \ \ \ \ \ beneficio\ \textcolor{BrickRed}{=}\ precios\textcolor{BrickRed}{[}i\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{-}\ precios\textcolor{BrickRed}{[}minimo\textcolor{BrickRed}{]} \\
+\mbox{} \\
+\mbox{}\ \ \ \ \ \ \ \ \textbf{\textcolor{Blue}{if}}\ \textcolor{BrickRed}{(}beneficio\ \textcolor{BrickRed}{\textgreater{}}\ precios\textcolor{BrickRed}{[}venta\textcolor{BrickRed}{]}\ \textcolor{BrickRed}{-}\ precios\textcolor{BrickRed}{[}compra\textcolor{BrickRed}{])} \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ compra\ \textcolor{BrickRed}{=}\ minimo \\
+\mbox{}\ \ \ \ \ \ \ \ \ \ \ \ venta\ \textcolor{BrickRed}{=}\ i \\
+\mbox{} \\
+\mbox{}\ \ \ \ \textbf{\textcolor{Blue}{return}}\ \textcolor{BrickRed}{(}compra\textcolor{BrickRed}{,}\ venta\textcolor{BrickRed}{)} \\
+\mbox{}\textbf{\textcolor{Blue}{end}} \\
+\mbox{}
