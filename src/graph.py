@@ -33,7 +33,7 @@ def readGraph ():
         a,b,w = int(a),int(b),int(w)
         graph[(a,b)] = w
         
-        return graph
+    return graph
 
 
 def distanceMatrix(graph):
