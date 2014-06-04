@@ -17,9 +17,9 @@ unsigned num_coins(vector<unsigned> tipos, unsigned precio) {
 
     for (unsigned c = 0; c <= precio; c++)
         for (unsigned m : tipos)
-            if (c+m <= precio)
-                if (monedas[c+m] == 0 || monedas[c] + 1 < monedas[c+m])
-                    monedas[c+m] = monedas[c] + 1;
+            if (c+m <= precio &&
+                (monedas[c+m] == 0 || monedas[c] + 1 < monedas[c+m]))
+                monedas[c+m] = monedas[c] + 1;
 
     return monedas[precio];
 }

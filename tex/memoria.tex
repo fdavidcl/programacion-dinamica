@@ -121,7 +121,7 @@ Programación Dinámica} % Subtitle
 		Pseudocódigo del algoritmo:
 		
 		\small
-		\texttt{\input{compraventa_iter.pseudo.tex}}
+		\texttt{\input{compraventa_iter.final.pseudo.tex}}
 		\normalsize
 		
 	\subsection{Análisis de eficiencia}
@@ -157,6 +157,16 @@ Programación Dinámica} % Subtitle
     Ya que la solución óptima debe ser de esa forma para alguna moneda $m_i$.
   
     Aplicamos programación dinámica memorizando las imágenes por esta función.
+    
+    Pseudocódigo del algoritmo:
+    
+ 		\small
+ 		\texttt{\input{terminales_iter.final.pseudo.tex}}
+ 		\normalsize
+ 	
+ 	\subsection{Análisis de eficiencia}
+ 	En este algoritmo, utilizamos dos bucles anidados,
+ 	el exterior realiza \texttt{precio} iteraciones, y el interior recorre los tipos, luego hará tantas iteraciones como tipos haya. En resumen, la eficiencia queda $\mathcal{O}(np)$, donde $n$ es la cantidad de tipos distintos de monedas y $p$ es el precio a resolver.
   
 \section{Problema del viajante de comercio}
   \subsection{Enunciado}
@@ -180,8 +190,15 @@ Programación Dinámica} % Subtitle
     Sea $G=(V,E)$ un grafo con $n$ vértices $V$ y un conjunto de aristas $E$,
     donde cada arista $(u,v)$ tiene asociado un peso $w(u,v)$.
     
+    %http://es.wikipedia.org/wiki/Camino_%28teor%C3%ADa_de_grafos%29
+    Definimos camino como una secuencia de vértices del grafo de manera que exista una arista entre cada vértice y el siguiente. Se dice que es simple si no repite vértices. Si el camino empieza y termina en el mismo nodo, se llama ciclo.
+    
+    Definimos el coste asociado a un camino como la suma de los pesos de las aristas usadas para unir los vértices de dicho camino.
+     
+    Llamamos camino de coste mínimo al camino con nodo origen $s$ y destino $a$ de menor coste asociado.
+    
     El problema del \textit{All Pairs Shortest Path} (APSP) consiste en encontrar el camino de coste mínimo para cualquier pareja de puntos $u$ y $v$.
-  
+    
   \subsection{Algoritmo de Dijkstra}
     Para el algoritmo de Dijkstra asumimos que el grafo no contiene aristas de peso negativo.
     Fijado un vértice $s$, definimos $g(a)$ como la distancia del camino mínimo entre $s$ y $a$.
@@ -196,80 +213,101 @@ Programación Dinámica} % Subtitle
     \end{itemize}
     
     Para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
-    de los posibles nodos iniciales.
+    de los posibles nodos iniciales. La función recursiva queda definida como:
+    \begin{equation} 
+      \begin{split}
+	g(s)  &=  0 \\
+	g(a)  &=  \min_{r \in V} \{g(r) + w(r,a)\} \\
+      \end{split}
+    \end{equation}
+    Nótese que si $a,r$ no están conectados, el peso de su arista es infinito.
   
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Dijkstra debemos requerir que el grafo
       no contenga aristas de peso negativo.
+      
+      En un análisis de la eficiencia del algoritmo de Dijkstra, comprobamos que se realizan a lo sumo $n-1$ actualizaciones de la distancia, una por cada nodo que tomamos como referente. Para calcular esa distancia, realizamos un máximo de $|E|$ comparaciones, tantas como aristas haya, seguidas de una suma y una comparación para actualizar la etiqueta de cada nodo, lo que nos dice que el algoritmo tendrá un orden de eficiencia $\mathcal{O}(|V|\times |E|)$. 
+      
+      Como lo empleamos en cada nodo del grafo, el algoritmo final tendrá una eficiencia $\mathcal{O}(|V|^2\times |E|)$. 
 
   \subsection{Algoritmo de Bellman-Ford}
     Para el algoritmo de Bellman-Ford asumimos que el grafo no contiene ciclos de peso negativo.
     Fijado un vértice $s$, definimos $g(a,m)$ como la distancia del camino mínimo entre $s$ y $a$
     usando hasta $m$ aristas.
     
-    Trivialmente, la distancia mínima desde $s$ hasta $a$ será $g(a,m-1)$, ya que no puede
+    Trivialmente, la distancia mínima desde $s$ hasta $a$ será $g(a,n-1)$, ya que no puede
     haber ciclos de peso negativo. Podemos calcular entonces la función usando recursividad:
     \begin{equation} 
       \begin{split}
 	g(s,0)  &=  0 \\
 	g(u,0)  &=  \infty \\
-	g(u,m)  &=  \min_{v \in V} \{g(v,m-1) + w(v,u)\} \\
-      \end{split} 
+	g(u,m)  &=  \min_{(u,v) \in E} \{g(v,m-1) + w(v,u)\} \\
+      \end{split}
     \end{equation}
 
-    Como en el caso anterior, para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
+    Como en el caso anterior, para el problema APSP se aplicará este algoritmo $n$ veces sobre cada uno
     de los posibles nodos iniciales.
-  
+
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
       no contenga ciclos de peso negativo.
       
+      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como aristas haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(|V|\times |E|)$ con $|E|$ el número de aristas.
+      
+      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada vértice tiene una eficiencia de $\mathcal{O}(|V|^2\times |E|)$.
       
       
-  \subsection{Algoritmo de Floyd-Warshall}
-    Para el algoritmo de Floyd-Warshall asumimos que el grafo no contiene ciclos de peso negativo.
-    Dados vértices $u,v \in V$, llamaremos $g(u,v,m)$ a la distancia del camino más corto de $u$
-    hasta $v$ pudiendo usar sólo los nodos $[1..m]$ como nodos intermedios.
-    
-    Podemos calcular entonces la función usando recursividad, sabiendo que el
-    camino mínimo está obligado a pasar o no pasar por el nodo $k$ y que los
-    subcaminos de un camino mínimo son también mínimos:
-    \begin{equation}
-      \begin{split}
-      g(u,v,0) &= w(u,v) \\
-      g(u,v,m) &= min\{g(u,v,m-1), g(u,k,k-1)+g(k,v,k-1)\}
-      \end{split}
-    \end{equation}
+      
+    \subsection{Algoritmo de Floyd-Warshall}
+      Para el algoritmo de Floyd-Warshall asumimos que el grafo no contiene ciclos de peso negativo.
+      Dados vértices $u,v \in V$, llamaremos $g(u,v,m)$ a la distancia del camino más corto de $u$
+      hasta $v$ pudiendo usar sólo los nodos $[1..m]$ como nodos intermedios.
+      
+      Podemos calcular entonces la función usando recursividad, sabiendo que el
+      camino mínimo está obligado a pasar o no pasar por el nodo $k$ y que los
+      subcaminos de un camino mínimo son también mínimos:
+      \begin{equation}
+	\begin{split}
+	g(u,v,0) &= w(u,v) \\
+	g(u,v,m) &= min\{g(u,v,m-1), g(u,k,k-1)+g(k,v,k-1)\}
+	\end{split}
+      \end{equation}
     
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Floyd-Warshall debemos requerir que el grafo
       no contenga ciclos de peso negativo.
       
-      El algoritmo tendrá una eficiencia de $O(n^3)$, ya que necesitaremos calcular
+      El algoritmo tendrá una eficiencia de $\mathcal{O}(|V|^3)$, ya que necesitaremos calcular
       todos los valores de la función ternaria $g$, y cada uno de ellos se calcula
-      en tiempo $O(1)$ suponiendo calculados los que dependen de él, que serán valores
+      en tiempo $\mathcal{O}(1)$ suponiendo calculados los que dependen de él, que serán valores
       memoizados.
   
   \subsection{Algoritmo de Johnson}
-      Exigimos que el grafo sea dirigido disperso(número de aristas muy inferior al del
-      máximo posible en el grafo), sin ciclos negativos.
+      Exigimos que el grafo sea dirigido disperso (número de aristas muy inferior al del
+      máximo posible en el grafo) y sin ciclos negativos.
       
-      Sea un grafo $G=(V,E)$ con pesos $w(i,j)$. 
+      %% Notación del enunciado
+      %Sea un grafo $G=(V,E)$ con pesos $w(i,j)$. 
       
     \begin{itemize}
-      \item Añadimos un vértice $q$ al grafo con $w(q,u) = 0 \quad \forall u \in V$
+      \item Añadimos un vértice $q$ al grafo, definiendo $w(q,u) = 0 \quad \forall u \in V$
       \item Se emplea el algoritmo de Bellman-Ford partiendo de $q$, definiendo
-	$g(v):=$peso del camino mínimo de $q$ a $v$
-      \item Se redifine $w(u,v):=w(u,v) + g(u)-g(v)$. Dado un camino de origen $u$ y
+	$g(v)$ como el peso del camino mínimo de $q$ a $v$
+      \item Se redefine $w(u,v):=w(u,v) + g(u)-g(v)$. Dado un camino de origen $u$ y
 	extremo $v$ que pasa por nodos intermedios $[i_1,\ldots i_p]$ su coste es:
+	
 	\begin{eqnarray*}
 	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) g(i_k) - g(i_{k+1}) + w(i_p,v) + \\
 	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + w(i_p,v) + g(u) - g(v)
 	\end{eqnarray*}
 	
 	Por tanto a todos los caminos que van de $u$ a $v$ en el grafo de nuevos pesos
-	se le suma la constante $g(u) - g(v)$
+	se le suma la constante $g(u) - g(v)$.
       \item Usamos el algoritmo de Dijkstra en el grafo de nuevos pesos.
     \end{itemize}
-
+    
+      \subsubsection{Requisitos y eficiencia}
+	Para poder ejecutar el algoritmo de Johnson, dado que utiliza el algoritmo de Bellman-Ford tenemos los mismos 
+	requisitos, es decir, debemos requerir que el grafo no contenga ciclos de peso negativo.
+	
 \end{document}
