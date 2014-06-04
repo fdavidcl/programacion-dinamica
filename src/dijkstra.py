@@ -2,53 +2,57 @@
 # encoding: utf8
 
 from math import sqrt
-    
-def dijkstra(s):
-    padre = {}
-    padre[s] = None
-    recorrer = range(n)
-    recorrer.remove(s)
-    
-    D = [ d[s][i] for i in range(n) ]
-    # Inicializamos los padres
-    for i in recorrer:
-        if D[i] < float("inf"):
-            padre[i] = s
-    
-    while recorrer:
-        w,v = min( [(D[k], k) for k in recorrer] ) 
-        
-        for i in range(len(recorrer)):
-            a = recorrer[i]
-            D[a],b = min( [(D[k] + d[k][a], k) for k in range(n)] )
-            if a is not b:
-                padre[a] = b
-                
-        recorrer.remove(v)
-    
-    return padre,D
+from graph import readGraph
 
 
-def decodePath(i,p):
-    path=str(i)
-
-    while (p[i] is not None):
-        path += " >- " + str(p[i])
-        i = p[i]
-        
-    return path[::-1]
-        
+def dijkstra_algorithm(graph):
+    n = graph['num_vertices']
+    del graph['num_vertices']
+    w = [[graph[(u,v)] for v in range(n)] for u in range(n)]
     
+    def algorithm(s):
+        padre = {}
+        padre[s] = None
+        recorrer = range(n)
+        recorrer.remove(s)
+        
+        d = [ w[s][i] for i in range(n) ]
+        # Inicializamos los padres
+        for i in recorrer:
+            if d[i] < float("inf"):
+                padre[i] = s
+        
+        # Mientras queden nodos por recorrer
+        while recorrer:
+            u,v = min( [(d[k], k) for k in recorrer] ) 
+            
+            for i in range(len(recorrer)):
+                a = recorrer[i]
+                d[a],b = min( [(d[k] + w[k][a], k) for k in range(n)] )
+                if a is not b:
+                    padre[a] = b
+                    
+            recorrer.remove(v)
+        
+        return padre,d
+
+    # Devuelve el camino hasta el nodo origen partiendo de i
+    def decode_path(i,p):
+        path=str(i)
+
+        while (p[i] is not None):
+            path += " >- " + str(p[i])
+            i = p[i]
+            
+        return path[::-1]
+        
+    # Partiendo de todos los nodos aplicamos Dijkstra
+    for u in range(n):
+        camino,distancia = algorithm(u)
+        for v in range(n):
+            if v is not u:
+                print "Camino: ", decode_path(v,camino), "\t\tDistancia: ", distancia[v]
+
 if __name__ == "__main__":
-    n=5
-    
-    d=[[0,1,3,float("inf"),2],
-       [9,0,float("inf"),float("inf"),7],
-       [9,5,0,float("inf"),7],
-       [9,4,2.5,0,float("inf")],
-       [float("inf"),4,2.5,5,0]]
-    
-    for i in range(n-1):
-        p,D = dijkstra(i)
-        for j in range(n-1):
-            print "Camino: ", decodePath(j,p), "\t\tDistancia: ", D[j]
+    graph = readGraph()
+    dijkstra_algorithm(graph)

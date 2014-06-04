@@ -30,7 +30,7 @@ def readGraph ():
     # Lee aristas
     for i in range(e):
         a,b,w = raw_input().strip().split()
-        a,b,w = int(a),int(b),int(w)
+        a,b,w = float(a),float(b),float(w)
         graph[(a,b)] = w
         
     return graph
