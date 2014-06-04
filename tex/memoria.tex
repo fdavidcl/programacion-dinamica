@@ -250,9 +250,9 @@ Programación Dinámica} % Subtitle
       Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
       no contenga ciclos de peso negativo.
       
-      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como vértices haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(|V|\times n)$ con $|V|$ el número de vértices.
+      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como aristas haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(n\times |E|)$ con $|E|$ el número de aristas.
       
-      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada vértice tiene una eficiencia de $\mathcal{O}(|V|^2\times n)$.
+      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada vértice tiene una eficiencia de $\mathcal{O}(n^2\times |E|)$.
       
       
       
