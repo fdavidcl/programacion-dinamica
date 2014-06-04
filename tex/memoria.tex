@@ -225,6 +225,8 @@ Programación Dinámica} % Subtitle
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Dijkstra debemos requerir que el grafo
       no contenga aristas de peso negativo.
+      
+      En un análisis de la eficiencia del algoritmo de Dijkstra, comprobamos que se realizan $n-1$ actualizaciones de la distancia, una por cada nodo que tomamos como referente. Para calcular esa distancia, realizamos un máximo de $n-1$ comparaciones, seguidas de una suma y una comparación para actualizar la etiqueta de cada nodo, lo que nos dice que el algoritmo tendrá un orden de eficiencia cuadrático. Como lo empleamos en cada nodo del grafo, el algoritmo final tendrá una eficiencia $O(n^3)$. 
 
   \subsection{Algoritmo de Bellman-Ford}
     Para el algoritmo de Bellman-Ford asumimos que el grafo no contiene ciclos de peso negativo.
