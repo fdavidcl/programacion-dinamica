@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-from math import sqrt
 from graph import readGraph
-
 
 def dijkstra_algorithm(graph):
     n = graph['num_vertices']
@@ -12,33 +10,32 @@ def dijkstra_algorithm(graph):
     
     def algorithm(s):
         padre = {}
-        padre[s] = None
         recorrer = range(n)
         recorrer.remove(s)
         
-        d = [ w[s][i] for i in range(n) ]
+        d = [ w[s][v] for v in range(n) ]
+        
         # Inicializamos los padres
-        for i in recorrer:
-            if d[i] < float("inf"):
-                padre[i] = s
+        padre[s] = None
+        for v in recorrer:
+            if d[v] < float("inf"):
+                padre[v] = s
         
         # Mientras queden nodos por recorrer
         while recorrer:
-            u,v = min( [(d[k], k) for k in recorrer] ) 
-            
-            for i in range(len(recorrer)):
-                a = recorrer[i]
-                d[a],b = min( [(d[k] + w[k][a], k) for k in range(n)] )
+            u,v = min( [(d[i], i) for i in recorrer] ) 
+            recorrer.remove(v)            
+
+            for a in recorrer:
+                d[a],b = min( [(d[v]+w[v][a],v),(d[a],a)] )
                 if a is not b:
                     padre[a] = b
-                    
-            recorrer.remove(v)
         
         return padre,d
 
-    # Devuelve el camino hasta el nodo origen partiendo de i
+    # Devuelve el camino desde el nodo 'origen' hasta i
     def decode_path(i,p):
-        path=str(i)
+        path = str(i)
 
         while (p[i] is not None):
             path += " >- " + str(p[i])
