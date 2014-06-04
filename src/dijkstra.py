@@ -11,12 +11,13 @@ def dijkstra_algorithm(graph):
     
     def algorithm(s):
         padre = {}
-        padre[s] = None
         recorrer = range(n)
         recorrer.remove(s)
         
         d = [ w[s][i] for i in range(n) ]
+        
         # Inicializamos los padres
+        padre[s] = None
         for i in recorrer:
             if d[i] < float("inf"):
                 padre[i] = s
