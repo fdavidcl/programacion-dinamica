@@ -243,12 +243,16 @@ Programación Dinámica} % Subtitle
       \end{split}
     \end{equation}
 
-    Como en el caso anterior, para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
+    Como en el caso anterior, para el problema APSP se aplicará este algoritmo $n$ veces sobre cada uno
     de los posibles nodos iniciales.
 
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
       no contenga ciclos de peso negativo.
+      
+      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como vértices haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(|V|\times n)$ con $|V|$ el número de vértices.
+      
+      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada vértice tiene una eficiencia de $\mathcal{O}(|V|^2\times n)$.
       
       
       
