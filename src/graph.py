@@ -36,7 +36,7 @@ def readGraph ():
         return graph
 
 
-def distance_matrix(graph):
+def distanceMatrix(graph):
     """ Da la matriz de distancias de un grafo. """
     def dist(a,b):
         if (a,b) in graph: 
