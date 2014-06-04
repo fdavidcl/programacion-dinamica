@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-from math import sqrt
 from graph import readGraph
 
 
