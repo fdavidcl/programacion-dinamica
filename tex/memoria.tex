@@ -239,7 +239,7 @@ Programación Dinámica} % Subtitle
       \begin{split}
 	g(s,0)  &=  0 \\
 	g(u,0)  &=  \infty \\
-	g(u,m)  &=  \min_{v \in V} \{g(v,m-1) + w(v,u)\} \\
+	g(u,m)  &=  \min_{(u,v) \in E} \{g(v,m-1) + w(v,u)\} \\
       \end{split}
     \end{equation}
 
