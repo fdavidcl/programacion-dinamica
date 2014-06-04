@@ -38,6 +38,4 @@ int main (int argc, char const *argv[]) {
     cin >> precio;
 
     cout << endl << "Número de monedas necesarias: " << num_coins(tipos, precio) << endl;
-
-    return 0;
 }
