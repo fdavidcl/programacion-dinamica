@@ -213,7 +213,14 @@ Programación Dinámica} % Subtitle
     \end{itemize}
     
     Para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
-    de los posibles nodos iniciales.
+    de los posibles nodos iniciales. La función recursiva queda definida como:
+    \begin{equation} 
+      \begin{split}
+	g(s)  &=  0 \\
+	g(a)  &=  \min_{r \in V} \{g(r) + w(r,a)\} \\
+      \end{split}
+    \end{equation}
+    Nótese que si $a,r$ no están conectados, el peso de su arista es infinito.
   
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Dijkstra debemos requerir que el grafo
@@ -243,20 +250,20 @@ Programación Dinámica} % Subtitle
       
       
       
-  \subsection{Algoritmo de Floyd-Warshall}
-    Para el algoritmo de Floyd-Warshall asumimos que el grafo no contiene ciclos de peso negativo.
-    Dados vértices $u,v \in V$, llamaremos $g(u,v,m)$ a la distancia del camino más corto de $u$
-    hasta $v$ pudiendo usar sólo los nodos $[1..m]$ como nodos intermedios.
-    
-    Podemos calcular entonces la función usando recursividad, sabiendo que el
-    camino mínimo está obligado a pasar o no pasar por el nodo $k$ y que los
-    subcaminos de un camino mínimo son también mínimos:
-    \begin{equation}
-      \begin{split}
-      g(u,v,0) &= w(u,v) \\
-      g(u,v,m) &= min\{g(u,v,m-1), g(u,k,k-1)+g(k,v,k-1)\}
-      \end{split}
-    \end{equation}
+    \subsection{Algoritmo de Floyd-Warshall}
+      Para el algoritmo de Floyd-Warshall asumimos que el grafo no contiene ciclos de peso negativo.
+      Dados vértices $u,v \in V$, llamaremos $g(u,v,m)$ a la distancia del camino más corto de $u$
+      hasta $v$ pudiendo usar sólo los nodos $[1..m]$ como nodos intermedios.
+      
+      Podemos calcular entonces la función usando recursividad, sabiendo que el
+      camino mínimo está obligado a pasar o no pasar por el nodo $k$ y que los
+      subcaminos de un camino mínimo son también mínimos:
+      \begin{equation}
+	\begin{split}
+	g(u,v,0) &= w(u,v) \\
+	g(u,v,m) &= min\{g(u,v,m-1), g(u,k,k-1)+g(k,v,k-1)\}
+	\end{split}
+      \end{equation}
     
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Floyd-Warshall debemos requerir que el grafo
