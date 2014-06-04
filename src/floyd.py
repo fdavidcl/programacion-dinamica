@@ -5,3 +5,4 @@ from graph import *
 
 if __name__ == "__main__":
     matrix = distanceMatrix(readGraph())
+    printMatrix(matrix)

@@ -41,8 +41,22 @@ def distanceMatrix(graph):
     def dist(a,b):
         if (a,b) in graph: 
             return graph[(a,b)]
+        elif (b,a) in graph:
+            return graph[(b,a)]
+        elif a == b:
+            return 0
         else:
             return float('inf')
 
     n = graph['num_vertices']
     return [[dist(a,b) for b in range(n)] for a in range(n)]
+
+
+def printMatrix(matrix):
+    """ Imprime una matriz """
+    for i in range(len(matrix)):
+        print '(',
+        for j in range(len(matrix[i])):
+            print repr(matrix[i][j]).center(3),
+        print ')'
+
