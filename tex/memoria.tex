@@ -273,6 +273,7 @@ Programación Dinámica} % Subtitle
 	$g(v)$ como el peso del camino mínimo de $q$ a $v$
       \item Se redefine $w(u,v):=w(u,v) + g(u)-g(v)$. Dado un camino de origen $u$ y
 	extremo $v$ que pasa por nodos intermedios $[i_1,\ldots i_p]$ su coste es:
+	
 	\begin{eqnarray*}
 	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) g(i_k) - g(i_{k+1}) + w(i_p,v) + \\
 	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + w(i_p,v) + g(u) - g(v)
