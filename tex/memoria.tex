@@ -190,6 +190,13 @@ Programación Dinámica} % Subtitle
     Sea $G=(V,E)$ un grafo con $n$ vértices $V$ y un conjunto de aristas $E$,
     donde cada arista $(u,v)$ tiene asociado un peso $w(u,v)$.
     
+    %http://es.wikipedia.org/wiki/Camino_%28teor%C3%ADa_de_grafos%29
+    Definimos camino como una secuencia de vértices del grafo de manera que exista una arista entre cada vértice y el siguiente. Se dice que es simple si no repite vértices. Si el camino empieza y termina en el mismo nodo, se llama ciclo.
+    
+    Definimos el coste asociado a un camino como la suma de los pesos de las aristas usadas para unir los vértices de dicho camino.
+     
+    Llamamos camino de coste mínimo al camino con nodo origen $s$ y destino $a$ de menor coste asociado.
+    
     El problema del \textit{All Pairs Shortest Path} (APSP) consiste en encontrar el camino de coste mínimo para cualquier pareja de puntos $u$ y $v$.
   
   \subsection{Algoritmo de Dijkstra}
