@@ -121,7 +121,7 @@ Programación Dinámica} % Subtitle
 		Pseudocódigo del algoritmo:
 		
 		\small
-		\texttt{\input{compraventa_iter.pseudo.tex}}
+		\texttt{\input{compraventa_iter.final.pseudo.tex}}
 		\normalsize
 		
 	\subsection{Análisis de eficiencia}
@@ -157,6 +157,16 @@ Programación Dinámica} % Subtitle
     Ya que la solución óptima debe ser de esa forma para alguna moneda $m_i$.
   
     Aplicamos programación dinámica memorizando las imágenes por esta función.
+    
+    Pseudocódigo del algoritmo:
+    
+ 		\small
+ 		\texttt{\input{terminales_iter.final.pseudo.tex}}
+ 		\normalsize
+ 	
+ 	\subsection{Análisis de eficiencia}
+ 	En este algoritmo, utilizamos dos bucles anidados,
+ 	el exterior realiza \texttt{precio} iteraciones, y el interior recorre los tipos, luego hará tantas iteraciones como tipos haya. En resumen, la eficiencia queda $\mathcal{O}(np)$, donde $n$ es la cantidad de tipos distintos de monedas y $p$ es el precio a resolver.
   
 \section{Problema del viajante de comercio}
   \subsection{Enunciado}
@@ -197,7 +207,7 @@ Programación Dinámica} % Subtitle
     \begin{itemize}
       \item Al nodo fijado $s$, le asignamos el valor 0 y lo tomamos como referente $r$ y al resto le asignamos $\infty$
       \item A todos los puntos que estén unidos al nodo $r$  por una
-      arista y no hayan sido tomados como referente antes $a$, le asignamos $g(a) = \min \{g(a), g(r) + w(r,a)\}$.
+      arista y no hayan sido tomados como referente antes, $a$, le asignamos $g(a) = \min \{g(a), g(r) + w(r,a)\}$.
       \item Tomamos como referente $r$ el siguiente nodo del grafo con el menor valor.
       \item Repetimos los puntos 2 y 3 hasta que todos los nodos hayan sido tomados como referente.
     \end{itemize}
@@ -214,19 +224,19 @@ Programación Dinámica} % Subtitle
     Fijado un vértice $s$, definimos $g(a,m)$ como la distancia del camino mínimo entre $s$ y $a$
     usando hasta $m$ aristas.
     
-    Trivialmente, la distancia mínima desde $s$ hasta $a$ será $g(a,m-1)$, ya que no puede
+    Trivialmente, la distancia mínima desde $s$ hasta $a$ será $g(a,n-1)$, ya que no puede
     haber ciclos de peso negativo. Podemos calcular entonces la función usando recursividad:
     \begin{equation} 
       \begin{split}
 	g(s,0)  &=  0 \\
 	g(u,0)  &=  \infty \\
 	g(u,m)  &=  \min_{v \in V} \{g(v,m-1) + w(v,u)\} \\
-      \end{split} 
+      \end{split}
     \end{equation}
 
     Como en el caso anterior, para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
     de los posibles nodos iniciales.
-  
+
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
       no contenga ciclos de peso negativo.
@@ -258,5 +268,27 @@ Programación Dinámica} % Subtitle
       memoizados.
   
   \subsection{Algoritmo de Johnson}
+      Exigimos que el grafo sea dirigido disperso (número de aristas muy inferior al del
+      máximo posible en el grafo) y sin ciclos negativos.
+      
+      %% Notación del enunciado
+      %Sea un grafo $G=(V,E)$ con pesos $w(i,j)$. 
+      
+    \begin{itemize}
+      \item Añadimos un vértice $q$ al grafo, definiendo $w(q,u) = 0 \quad \forall u \in V$
+      \item Se emplea el algoritmo de Bellman-Ford partiendo de $q$, definiendo
+	$g(v)$ como el peso del camino mínimo de $q$ a $v$
+      \item Se redefine $w(u,v):=w(u,v) + g(u)-g(v)$. Dado un camino de origen $u$ y
+	extremo $v$ que pasa por nodos intermedios $[i_1,\ldots i_p]$ su coste es:
+	
+	\begin{eqnarray*}
+	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) g(i_k) - g(i_{k+1}) + w(i_p,v) + \\
+	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + w(i_p,v) + g(u) - g(v)
+	\end{eqnarray*}
+	
+	Por tanto a todos los caminos que van de $u$ a $v$ en el grafo de nuevos pesos
+	se le suma la constante $g(u) - g(v)$
+      \item Usamos el algoritmo de Dijkstra en el grafo de nuevos pesos.
+    \end{itemize}
 
 \end{document}
