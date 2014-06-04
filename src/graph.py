@@ -15,26 +15,34 @@ def readGraph ():
         [...]
     
     Donde "n" es el número de vértices, "e" número de aristas. 
-    Y cada arista es del tipo [a,b] con peso w: (a,b,w)
+    Y cada arista es del tipo [a,b] con peso w: (a,b):w
     """
     
     # Define el grafo
     graph = {
-    'vertices': 0,
-    'edges': set()
+        'num_vertices': 0
     }
     
     # Lee dimensión
-    graph['vertices'] = int(input())
+    graph['num_vertices'] = int(input())
     e = int(input())
     
     # Lee aristas
     for i in range(e):
         a,b,w = raw_input().strip().split()
         a,b,w = int(a),int(b),int(w)
-        graph['edges'].add((a,b,w))
+        graph[(a,b)] = w
         
         return graph
 
-#def distance_matrix(graph):
-    
+
+def distance_matrix(graph):
+    """ Da la matriz de distancias de un grafo. """
+    def dist(a,b):
+        if (a,b) in graph: 
+            return graph[(a,b)]
+        else:
+            return float('inf')
+
+    n = graph['num_vertices']
+    return [[dist(a,b) for b in range(n)] for a in range(n)]
