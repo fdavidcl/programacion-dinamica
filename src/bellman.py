@@ -19,9 +19,7 @@ def bellman_ford(graph):
 
         return distancia
 
-    mindist = [algorithm(vertice) for vertice in xrange(n)]
-
-    return mindist
+    return [algorithm(vertice) for vertice in xrange(n)]
 
 
 if __name__ == "__main__":
