@@ -5,10 +5,10 @@ from graph import *
 
 
 def dijkstraASPS(graph):
+    w = distanceMatrix(graph)
     n = graph['num_vertices']
     del graph['num_vertices']
-    w = distanceMatrix(graph)
-    
+
     def dijkstra(s):
         padre = {}
         recorrer = range(n)
@@ -47,7 +47,7 @@ def dijkstraASPS(graph):
 
     # Partiendo de todos los nodos aplicamos Dijkstra
     solucion = []
-    
+
     for u in range(n):
         camino,distancia = dijkstra(u)
         for v in range(n):
@@ -65,5 +65,9 @@ def print_paths(paths):
 
 if __name__ == "__main__":
     graph = readGraph()
+<<<<<<< HEAD
     print_paths (dijkstraASPS(graph))
     
+=======
+    print_paths (dijkstra_algorithm(graph))
+>>>>>>> cf261958a7ad9d9cebe40992f7837894ce36e09d
