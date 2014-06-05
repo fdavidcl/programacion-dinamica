@@ -47,9 +47,6 @@ def distanceMatrix(graph):
         # Caso de arista contenida en el grafo
         if (a,b) in graph:
             return graph[(a,b)]
-        # Caso simétrico
-        elif (b,a) in graph:
-            return graph[(b,a)]
         # Caso reflexivo
         elif a == b:
             return 0
