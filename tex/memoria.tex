@@ -346,5 +346,18 @@ Programación Dinámica} % Subtitle
 	ejecutarse, podemos observar que el algoritmo de Bellman-Ford es el menos restrictivo, ya que 
 	puede detectar ciclos negativos. Le siguen Floyd-Warshall y Johnson, que permiten algunos pesos 
 	negativos pero no ciclos. Finalmente Dijkstra no permite siquiera pesos negativos.
+	
+	La conveniencia de un algoritmo frente a otro dependerá
+	del grafo que se quiera usar. Por ejemplo, para grafos
+	muy dispersos (con muchos vértices y pocas aristas)
+	saldrán beneficiados los algoritmos de Dijkstra y
+	Bellman-Ford, ya que su eficiencia es de
+	$\mathcal{O}(|V|^2\times |E|)$. Sin embargo, si tenemos
+	un grafo con muchas aristas entre vértices, será
+	preferible utilizar un algoritmo como el de Floyd-Warshall,
+	ya que su eficiencia solo depende del número de vértices.
+	Por último, utilizaríamos Johnson si quisiéramos
+	preparar un grafo que incluye aristas negativas
+	para aplicar Dijkstra sobre él.
 
 \end{document}
