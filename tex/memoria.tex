@@ -240,8 +240,8 @@ Programación Dinámica} % Subtitle
     Fijado un vértice $s$, definimos $g(a,m)$ como la distancia del camino mínimo entre $s$ y $a$
     usando hasta $m$ aristas.
     
-    Trivialmente, la distancia mínima desde $s$ hasta $a$ será $g(a,n-1)$, ya que no puede
-    haber ciclos de peso negativo. Podemos calcular entonces la función usando recursividad:
+    Claramente, la distancia mínima desde $s$ hasta $a$ será $g(a,n-1)$, excepto que existan ciclos de peso 
+    negativo (en cuyo caso no hay distancia mínima). Podemos calcular entonces la función usando recursividad:
     \begin{equation} 
       \begin{split}
 	g(s,0)  &=  0 \\
@@ -254,7 +254,7 @@ Programación Dinámica} % Subtitle
     de los posibles nodos iniciales.
 
     \subsubsection{Requisitos y eficiencia}
-      El algoritmo de Bellman-Ford es capaz de detectar ciclos de peso negativo, en cuyo caso 
+      El algoritmo de Bellman-Ford es capaz de detectar ciclos de peso negativo. En el caso de que los encuentre 
       no habría una distancia mínima ya que siempre se puede hacer menor recorriendo el ciclo una vez más.
       
       La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. 
