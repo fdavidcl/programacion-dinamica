@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # encoding: utf8
 
-from graph import readGraph
+from graph import *
+
 
 def dijkstra_algorithm(graph):
     n = graph['num_vertices']
     del graph['num_vertices']
-    w = [[graph[(u,v)] for v in range(n)] for u in range(n)]
+    w = distanceMatrix(graph)
     
     def algorithm(s):
         padre = {}
