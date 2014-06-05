@@ -3,23 +3,24 @@
 
 from graph import *
 
+def bellman_algorithm(origen, graph, n):
+    distancia = [float('inf') for _ in xrange(n)]
+    distancia[origen] = 0
+    
+    for _ in xrange(n-1):
+        for (u,v) in graph:
+            if distancia[u] + graph[(u,v)] < distancia[v]:
+                distancia[v] = distancia[u] + graph[(u,v)]
+
+    return distancia
+
+
 def bellman_ford(graph):
     # precondición: el grafo no debe contener ciclos de peso negativo
     n = graph['num_vertices']
     del graph['num_vertices']
 
-    def algorithm(origen):
-        distancia = [float('inf') for _ in xrange(n)]
-        distancia[origen] = 0
-
-        for _ in xrange(n-1):
-            for (u,v) in graph:
-                if distancia[u] + graph[(u,v)] < distancia[v]:
-                    distancia[v] = distancia[u] + graph[(u,v)]
-
-        return distancia
-
-    return [algorithm(vertice) for vertice in xrange(n)]
+    return [bellman_algorithm(vertice,graph,n) for vertice in xrange(n)]
 
 
 if __name__ == "__main__":

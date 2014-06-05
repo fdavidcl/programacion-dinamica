@@ -35,21 +35,33 @@ def dijkstra_algorithm(graph):
 
     # Devuelve el camino desde el nodo 'origen' hasta i
     def decode_path(i,p):
-        path = str(i)
+        path = [i]
 
         while (p[i] is not None):
-            path += " >- " + str(p[i])
+            path.append(p[i])
             i = p[i]
             
         return path[::-1]
         
     # Partiendo de todos los nodos aplicamos Dijkstra
+    solucion = []
+    
     for u in range(n):
         camino,distancia = algorithm(u)
         for v in range(n):
             if v is not u:
-                print "Camino: ", decode_path(v,camino), "\t\tDistancia: ", distancia[v]
+                path = [decode_path(v,camino)]
+                path.append(distancia[v])
+                solucion.append(path)
+
+    return solucion
+
+
+def print_paths(paths):
+    for p in paths:
+        print "Distancia: ", p.pop(), "\t\tCamino: ", p.pop()
 
 if __name__ == "__main__":
     graph = readGraph()
-    dijkstra_algorithm(graph)
+    print_paths (dijkstra_algorithm(graph))
+    
