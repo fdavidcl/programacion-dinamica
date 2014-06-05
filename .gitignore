@@ -6,6 +6,7 @@ bin/
 *.directory
 *.zip
 *.pdf
+*.pyc
 *.directory
 *.fuse_hidden*
 *.synctex.gz

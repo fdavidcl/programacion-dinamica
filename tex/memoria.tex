@@ -282,8 +282,8 @@ Programación Dinámica} % Subtitle
       memoizados.
   
   \subsection{Algoritmo de Johnson}
-      Exigimos que el grafo sea dirigido disperso (número de aristas muy inferior al del
-      máximo posible en el grafo) y sin ciclos negativos.
+      Exigimos que el grafo sea dirigido y sin ciclos negativos. Además es recomendable
+      que el grafo sea  disperso (número de aristas muy inferior al máximo posible en el grafo).
       
       %% Notación del enunciado
       %Sea un grafo $G=(V,E)$ con pesos $w(i,j)$. 
@@ -296,8 +296,8 @@ Programación Dinámica} % Subtitle
 	extremo $v$ que pasa por nodos intermedios $[i_1,\ldots i_p]$ su coste es:
 	
 	\begin{eqnarray*}
-	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) g(i_k) - g(i_{k+1}) + w(i_p,v) + \\
-	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + w(i_p,v) + g(u) - g(v)
+	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + g(i_k) - g(i_{k+1})] + w(i_p,v) + \\
+	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1})] + w(i_p,v) + g(u) - g(v)
 	\end{eqnarray*}
 	
 	Por tanto a todos los caminos que van de $u$ a $v$ en el grafo de nuevos pesos
@@ -306,7 +306,8 @@ Programación Dinámica} % Subtitle
     \end{itemize}
     
       \subsubsection{Requisitos y eficiencia}
-	Para poder ejecutar el algoritmo de Johnson, dado que utiliza el algoritmo de Bellman-Ford tenemos los mismos 
+	Para poder ejecutar el algoritmo de Johnson, dado que utiliza el algoritmo de Bellman-Ford sobre un grafo
+	que se obtiene a partir del inicial sin destruir ninguna arista, tenemos los mismos 
 	requisitos, es decir, debemos requerir que el grafo no contenga ciclos de peso negativo.
 	
 	\subsection{Comparativa}
