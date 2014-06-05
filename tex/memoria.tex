@@ -238,7 +238,9 @@ Programación Dinámica} % Subtitle
       Como lo empleamos en cada nodo del grafo, el algoritmo final tendrá una eficiencia $\mathcal{O}(|V|^2\times |E|)$. 
 
   \subsection{Algoritmo de Bellman-Ford}
-    Para el algoritmo de Bellman-Ford asumimos que el grafo no contiene ciclos de peso negativo.
+	El algoritmo de Bellman-Ford encuentra caminos mínimos de un nodo origen a cualquier otro nodo, tratando de 
+	optimizar las distancias de las aristas intermedias. El algoritmo trabaja como sigue: 
+	
     Fijado un vértice $s$, definimos $g(a,m)$ como la distancia del camino mínimo entre $s$ y $a$
     usando hasta $m$ aristas.
     
