@@ -249,8 +249,7 @@ Programación Dinámica} % Subtitle
     de los posibles nodos iniciales.
 
     \subsubsection{Requisitos y eficiencia}
-      Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
-      no contenga ciclos de peso negativo.
+      El algoritmo de Bellman-Ford es capaz de detectar ciclos de peso negativo, en cuyo caso no habría una distancia mínima ya que siempre se puede hacer menor recorriendo el ciclo una vez más.
       
       La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como aristas haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(|V|\times |E|)$ con $|E|$ el número de aristas.
       
@@ -309,5 +308,10 @@ Programación Dinámica} % Subtitle
       \subsubsection{Requisitos y eficiencia}
 	Para poder ejecutar el algoritmo de Johnson, dado que utiliza el algoritmo de Bellman-Ford tenemos los mismos 
 	requisitos, es decir, debemos requerir que el grafo no contenga ciclos de peso negativo.
+	
+	\subsection{Comparativa}
+	Los cuatro algoritmos estudiados resuelven el problema del \textit{All-Pairs Shortest Path} con distintas estrategias. Mientras que el de Floyd-Warshall se decanta por los cálculos de mínimos de distancias entre todos los vértices pasando por cualquier otro, el algoritmo de Bellman-Ford busca las aristas intermedias que realicen las distancias mínimas, y el algoritmo de Dijkstra construye los caminos avanzando por las aristas de mínima distancia. Por su parte, el algoritmo de Johnson combina estos dos últimos sobre distintos grafos.
+	
+	Si atendemos a las restricciones que imponen los algoritmos sobre los grafos en los que pueden ejecutarse, podemos observar que el algoritmo de Bellman-Ford es el menos restrictivo, ya que puede detectar ciclos negativos. Le siguen Floyd-Warshall y Johnson, que permiten algunos pesos negativos pero no ciclos. Finalmente Dijkstra no permite siquiera pesos negativos.
 	
 \end{document}
