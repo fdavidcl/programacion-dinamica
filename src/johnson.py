@@ -2,7 +2,7 @@
 # encoding: utf8
 
 from graph import readGraph
-from dijkstra import dijkstra_algorithm, print_paths
+from dijkstra import dijkstraASPS, print_paths
 from bellman import bellman_algorithm
 
 def johnson(graph):
@@ -22,7 +22,7 @@ def johnson(graph):
 
     # Aplicamos Dijkstra al grafo de nuevos pesos
     grafo['num_vertices'] = n
-    paths = dijkstra_algorithm(grafo)
+    paths = dijkstraASPS(grafo)
     
     # Sumamos g[v] - g[u] para volver a tener la distancia inicial
     for i in range(len(paths)):

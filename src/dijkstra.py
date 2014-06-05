@@ -4,16 +4,17 @@
 from graph import *
 
 
-def dijkstra_algorithm(graph):
+def dijkstraASPS(graph):
     n = graph['num_vertices']
     del graph['num_vertices']
     w = distanceMatrix(graph)
     
-    def algorithm(s):
+    def dijkstra(s):
         padre = {}
         recorrer = range(n)
         recorrer.remove(s)
 
+        # Distancias al nodo inicial
         d = [ w[s][v] for v in range(n) ]
 
         # Inicializamos los padres
@@ -35,7 +36,7 @@ def dijkstra_algorithm(graph):
         return padre,d
 
     # Devuelve el camino desde el nodo 'origen' hasta i
-    def decode_path(i,p):
+    def decodePath(i,p):
         path = [i]
 
         while (p[i] is not None):
@@ -48,10 +49,10 @@ def dijkstra_algorithm(graph):
     solucion = []
     
     for u in range(n):
-        camino,distancia = algorithm(u)
+        camino,distancia = dijkstra(u)
         for v in range(n):
             if v is not u:
-                path = [decode_path(v,camino)]
+                path = [decodePath(v,camino)]
                 path.append(distancia[v])
                 solucion.append(path)
 
@@ -64,5 +65,5 @@ def print_paths(paths):
 
 if __name__ == "__main__":
     graph = readGraph()
-    print_paths (dijkstra_algorithm(graph))
+    print_paths (dijkstraASPS(graph))
     
