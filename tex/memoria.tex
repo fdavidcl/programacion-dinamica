@@ -170,6 +170,21 @@ Programación Dinámica} % Subtitle
   	\begin{equation}
   	    long(\sigma(S)) = long([(x_{\sigma(1)},y_{\sigma(1)}), (x_{\sigma(2)},y_{\sigma(2)}), \dots, (x_{\sigma(n)},y_{\sigma(n)})])
       \end{equation}
+    
+    \subsection{Algoritmo}
+    Aplicamos programación dinámica a este problema, sabiendo
+    que de una solución óptima para $n$ ciudades se puede extraer
+    una solución óptima para $n-1$ ciudades, eliminando
+    la última ciudad recorrida; por lo que cumple el principio
+    de optimalidad de Bellman. La función que se calculará recursivamente,
+    almacenando los resultados de cada subproblema, será
+    
+    \begin{equation}
+    \begin{split}
+    	g(i, [])  &=  dist[i][n-1] \\
+    	g(i, S)  &=  \min_{j \in L} \{ dist[i][j] + g(j, S-{j}) \} \\
+    	\end{split}
+    \end{equation}
       
 
 \section{Caminos mínimos en grafos}
