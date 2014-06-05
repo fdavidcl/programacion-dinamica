@@ -65,9 +65,4 @@ def print_paths(paths):
 
 if __name__ == "__main__":
     graph = readGraph()
-<<<<<<< HEAD
     print_paths (dijkstraASPS(graph))
-    
-=======
-    print_paths (dijkstra_algorithm(graph))
->>>>>>> cf261958a7ad9d9cebe40992f7837894ce36e09d
