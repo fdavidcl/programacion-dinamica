@@ -118,12 +118,6 @@ Programación Dinámica} % Subtitle
 		
 		Podemos observar que se cumple el principio de optimalidad de Bellman: el par $(a,b)$, solución óptima de los valores de 1 hasta $n$, estará compuesta de la solución $(a',b')$ dada por el mismo problema en los valores de 1 a $n-1$, y la comprobación de si la diferencia del mínimo de $valores$ hasta $n-1$ con $valores[n]$ es mayor que el beneficio de la solución $(a', b')$.
 		
-		Pseudocódigo del algoritmo:
-		
-		\small
-		\texttt{\input{compraventa_iter.final.pseudo.tex}}
-		\normalsize
-		
 	\subsection{Análisis de eficiencia}
 		El análisis de este algoritmo es muy sencillo. Tenemos un único bucle de tipo \textit{for} realizando $n-1$ iteraciones, con operaciones $\mathcal{O}(1)$ en el interior. Por tanto, su eficiencia será $\mathcal{O}(n)$, es decir, es un algoritmo lineal.
 
@@ -157,12 +151,6 @@ Programación Dinámica} % Subtitle
     Ya que la solución óptima debe ser de esa forma para alguna moneda $m_i$.
   
     Aplicamos programación dinámica memorizando las imágenes por esta función.
-    
-    Pseudocódigo del algoritmo:
-    
- 		\small
- 		\texttt{\input{terminales_iter.final.pseudo.tex}}
- 		\normalsize
  	
  	\subsection{Análisis de eficiencia}
  	En este algoritmo, utilizamos dos bucles anidados,
