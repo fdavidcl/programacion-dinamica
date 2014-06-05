@@ -4,7 +4,6 @@
 from graph import *
 
 def bellman_ford(graph):
-    # precondición: el grafo no debe contener ciclos de peso negativo
     n = graph['num_vertices']
     del graph['num_vertices']
 
@@ -16,6 +15,11 @@ def bellman_ford(graph):
             for (u,v) in graph:
                 if distancia[u] + graph[(u,v)] < distancia[v]:
                     distancia[v] = distancia[u] + graph[(u,v)]
+
+        # Detección de ciclos de peso negativo
+        for (u,v) in graph:
+            if distancia[u] + graph[(u,v)] < distancia[v]:
+                raise Exception("El grafo contiene un ciclo de peso negativo")
 
         return distancia
 
