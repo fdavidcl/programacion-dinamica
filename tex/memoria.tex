@@ -252,11 +252,16 @@ Programación Dinámica} % Subtitle
     de los posibles nodos iniciales.
 
     \subsubsection{Requisitos y eficiencia}
-      El algoritmo de Bellman-Ford es capaz de detectar ciclos de peso negativo, en cuyo caso no habría una distancia mínima ya que siempre se puede hacer menor recorriendo el ciclo una vez más.
+      El algoritmo de Bellman-Ford es capaz de detectar ciclos de peso negativo, en cuyo caso 
+      no habría una distancia mínima ya que siempre se puede hacer menor recorriendo el ciclo una vez más.
       
-      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como aristas haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(|V|\times |E|)$ con $|E|$ el número de aristas.
+      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. 
+      Para un nodo origen dado, el algoritmo realiza tantos cálculos como aristas haya, para cada 
+      $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de 
+      $\mathcal{O}(|V|\times |E|)$ con $|E|$ el número de aristas.
       
-      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada vértice tiene una eficiencia de $\mathcal{O}(|V|^2\times |E|)$.
+      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada 
+      vértice tiene una eficiencia de $\mathcal{O}(|V|^2\times |E|)$.
       
       
       
