@@ -300,6 +300,7 @@ Programación Dinámica} % Subtitle
       
     \begin{itemize}
       \item Añadimos un vértice $q$ al grafo, definiendo $w(q,u) = 0 \quad \forall u \in V$
+	Existe arista entre $q$ y $u$, pero no entre $u$ y $q$
       \item Se emplea el algoritmo de Bellman-Ford partiendo de $q$, definiendo
 	$g(v)$ como el peso del camino mínimo de $q$ a $v$
       \item Se redefine $w(u,v):=w(u,v) + g(u)-g(v)$. Dado un camino de origen $u$ y
