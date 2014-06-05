@@ -228,6 +228,10 @@ Programación Dinámica} % Subtitle
     \subsubsection{Requisitos y eficiencia}
       Para poder ejecutar el algoritmo de Dijkstra debemos requerir que el grafo
       no contenga aristas de peso negativo.
+      
+      En un análisis de la eficiencia del algoritmo de Dijkstra, comprobamos que se realizan a lo sumo $n-1$ actualizaciones de la distancia, una por cada nodo que tomamos como referente. Para calcular esa distancia, realizamos un máximo de $|E|$ comparaciones, tantas como aristas haya, seguidas de una suma y una comparación para actualizar la etiqueta de cada nodo, lo que nos dice que el algoritmo tendrá un orden de eficiencia $\mathcal{O}(|V|\times |E|)$. 
+      
+      Como lo empleamos en cada nodo del grafo, el algoritmo final tendrá una eficiencia $\mathcal{O}(|V|^2\times |E|)$. 
 
   \subsection{Algoritmo de Bellman-Ford}
     Para el algoritmo de Bellman-Ford asumimos que el grafo no contiene ciclos de peso negativo.
@@ -240,16 +244,19 @@ Programación Dinámica} % Subtitle
       \begin{split}
 	g(s,0)  &=  0 \\
 	g(u,0)  &=  \infty \\
-	g(u,m)  &=  \min_{v \in V} \{g(v,m-1) + w(v,u)\} \\
+	g(u,m)  &=  \min_{(u,v) \in E} \{g(v,m-1) + w(v,u)\} \\
       \end{split}
     \end{equation}
 
-    Como en el caso anterior, para el problema APSP se nos pide que apliquemos este algoritmo $n$ veces sobre cada uno
+    Como en el caso anterior, para el problema APSP se aplicará este algoritmo $n$ veces sobre cada uno
     de los posibles nodos iniciales.
 
     \subsubsection{Requisitos y eficiencia}
-      Para poder ejecutar el algoritmo de Bellman-Ford debemos requerir que el grafo
-      no contenga ciclos de peso negativo.
+      El algoritmo de Bellman-Ford es capaz de detectar ciclos de peso negativo, en cuyo caso no habría una distancia mínima ya que siempre se puede hacer menor recorriendo el ciclo una vez más.
+      
+      La eficiencia del algoritmo se puede extraer de los cálculos que se realizan para la función $g$. Para un nodo origen dado, el algoritmo realiza tantos cálculos como aristas haya, para cada $m = 1,\dots n-1$. Por tanto, el algoritmo de Bellman-Ford tiene una eficiencia de $\mathcal{O}(|V|\times |E|)$ con $|E|$ el número de aristas.
+      
+      Como consecuencia, el algoritmo que utiliza Bellman-Ford para extraer caminos mínimos para cada vértice tiene una eficiencia de $\mathcal{O}(|V|^2\times |E|)$.
       
       
       
@@ -272,14 +279,14 @@ Programación Dinámica} % Subtitle
       Para poder ejecutar el algoritmo de Floyd-Warshall debemos requerir que el grafo
       no contenga ciclos de peso negativo.
       
-      El algoritmo tendrá una eficiencia de $O(n^3)$, ya que necesitaremos calcular
+      El algoritmo tendrá una eficiencia de $\mathcal{O}(|V|^3)$, ya que necesitaremos calcular
       todos los valores de la función ternaria $g$, y cada uno de ellos se calcula
-      en tiempo $O(1)$ suponiendo calculados los que dependen de él, que serán valores
+      en tiempo $\mathcal{O}(1)$ suponiendo calculados los que dependen de él, que serán valores
       memoizados.
   
   \subsection{Algoritmo de Johnson}
-      Exigimos que el grafo sea dirigido disperso (número de aristas muy inferior al del
-      máximo posible en el grafo) y sin ciclos negativos.
+      Exigimos que el grafo sea dirigido y sin ciclos negativos. Además es recomendable
+      que el grafo sea  disperso (número de aristas muy inferior al máximo posible en el grafo).
       
       %% Notación del enunciado
       %Sea un grafo $G=(V,E)$ con pesos $w(i,j)$. 
@@ -292,8 +299,8 @@ Programación Dinámica} % Subtitle
 	extremo $v$ que pasa por nodos intermedios $[i_1,\ldots i_p]$ su coste es:
 	
 	\begin{eqnarray*}
-	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) g(i_k) - g(i_{k+1}) + w(i_p,v) + \\
-	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + w(i_p,v) + g(u) - g(v)
+	w(u,i_1) + g(u) -g(i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1}) + g(i_k) - g(i_{k+1})] + w(i_p,v) + \\
+	+ g(i_p)- g(v) = w(u,i_1) + \sum_{k=1}^{p-1} [w(i_{k},i_{k+1})] + w(i_p,v) + g(u) - g(v)
 	\end{eqnarray*}
 	
 	Por tanto a todos los caminos que van de $u$ a $v$ en el grafo de nuevos pesos
@@ -302,7 +309,13 @@ Programación Dinámica} % Subtitle
     \end{itemize}
     
       \subsubsection{Requisitos y eficiencia}
-	Para poder ejecutar el algoritmo de Johnson, dado que utiliza el algoritmo de Bellman-Ford tenemos los mismos 
+	Para poder ejecutar el algoritmo de Johnson, dado que utiliza el algoritmo de Bellman-Ford sobre un grafo
+	que se obtiene a partir del inicial sin destruir ninguna arista, tenemos los mismos 
 	requisitos, es decir, debemos requerir que el grafo no contenga ciclos de peso negativo.
+	
+	\subsection{Comparativa}
+	Los cuatro algoritmos estudiados resuelven el problema del \textit{All-Pairs Shortest Path} con distintas estrategias. Mientras que el de Floyd-Warshall se decanta por los cálculos de mínimos de distancias entre todos los vértices pasando por cualquier otro, el algoritmo de Bellman-Ford busca las aristas intermedias que realicen las distancias mínimas, y el algoritmo de Dijkstra construye los caminos avanzando por las aristas de mínima distancia. Por su parte, el algoritmo de Johnson combina estos dos últimos sobre distintos grafos.
+	
+	Si atendemos a las restricciones que imponen los algoritmos sobre los grafos en los que pueden ejecutarse, podemos observar que el algoritmo de Bellman-Ford es el menos restrictivo, ya que puede detectar ciclos negativos. Le siguen Floyd-Warshall y Johnson, que permiten algunos pesos negativos pero no ciclos. Finalmente Dijkstra no permite siquiera pesos negativos.
 	
 \end{document}
