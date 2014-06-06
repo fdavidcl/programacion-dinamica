@@ -10,9 +10,8 @@ def johnson(graph):
     del graph['num_vertices']
     grafo = graph.copy()
     
-    graph[(n,n)] = 0
     for i in range(n):
-        graph[(i,n)] = graph[(n,i)] = 0
+        graph[(n,i)] = 0
     
     # Aplicamos Bellman al grafo
     g = bellman_algorithm(n,graph,n+1)
