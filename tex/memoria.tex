@@ -237,6 +237,10 @@ Programación Dinámica} % Subtitle
       
       Como lo empleamos en cada nodo del grafo, el algoritmo final tendrá una eficiencia $\mathcal{O}(|V|^2\times |E|)$. 
 
+      En el caso de usar una estructura de datos tipo heap como cola de prioridad para
+      ordenar las distancias de los nodos, el cálculo del mínimo será $\mathcal{O}(\log|V|)$ 
+      en lugar de $\mathcal{O}(|V|)$. El total sería de complejidad  $\mathcal{O}(|E||V|\log|V|)$.
+      
   \subsection{Algoritmo de Bellman-Ford}
 	El algoritmo de Bellman-Ford encuentra caminos mínimos de un nodo origen a cualquier otro nodo, tratando de 
 	optimizar las distancias de las aristas intermedias. El algoritmo trabaja como sigue: 
@@ -342,5 +346,7 @@ Programación Dinámica} % Subtitle
 	ejecutarse, podemos observar que el algoritmo de Bellman-Ford es el menos restrictivo, ya que 
 	puede detectar ciclos negativos. Le siguen Floyd-Warshall y Johnson, que permiten algunos pesos 
 	negativos pero no ciclos. Finalmente Dijkstra no permite siquiera pesos negativos.
+	
+	
 
 \end{document}
