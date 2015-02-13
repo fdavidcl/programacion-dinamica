@@ -10,6 +10,7 @@ CFLAGS = -Wall -Wl,--no-as-needed
 CXXFLAGS = $(CFLAGS) -std=c++0x
 
 default: $(EXE)
+	mkdir -p bin
 	mv $(EXE) bin/
 
 clean:
